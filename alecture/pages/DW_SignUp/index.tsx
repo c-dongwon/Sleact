@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import dw_fetcher from '@utils/dw_fetcher';
 import { Success, Form, Error, Label, Input, LinkContainer, Button, Header } from './styles';
+import { Redirect } from 'react-router';
 
 const SignUp = () => {
   const {data, error, revalidate} = useSWR("http://localhost:3095/api/users", dw_fetcher);
@@ -52,14 +53,14 @@ const SignUp = () => {
         }
     },[email, nickname, password, passwordCheck, mismatchError])
 
-    // if (data === undefined) {
-    //   return <div>로딩중...</div>;
-    // }
+    if (data === undefined) {
+      return <div>로딩중...</div>;
+    }
   
-    // if (data) {
-    //   return <Redirect to="/workspace/sleact/channel/" />;
+    if (data) {
+      return <Redirect to="/DW_Workspace" />;
     
-    // }
+    }
     return (
         <div id="container">
         <Header>Sleact</Header>

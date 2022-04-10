@@ -22,8 +22,8 @@ export const Header = styled.header`
     display: flex;
     flex: 1;
     justify-content: flex-end;
-    align-items: center;
-  }
+    align-items: center
+    }
 `;
 
 export const DragOver = styled.div`

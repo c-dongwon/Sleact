@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import dw_fetcher from '@utils/dw_fetcher';
 
 const LogIn = () => {
-    const {data, error, revalidate} = useSWR("http://localhost:3095/api/users", dw_fetcher);
+    const {data, error, revalidate, mutate} = useSWR("http://localhost:3095/api/users", dw_fetcher);
     const [logInError, setLogInError] = useState(false);
     const [email, onChangeEmail] = useInput("");
     const [password, onChangePassword] = useInput("");
@@ -19,21 +19,21 @@ const LogIn = () => {
         {email, password}, {
           withCredentials:true,
         })
-        .then(() => {
-          revalidate()
+        .then((res) => {
+          mutate(res.data,false)
         })
         .catch((error) => {
             setLogInError(error.response?.data?.statusCode === 401);
         })
     },[email, password]);
 
-    // if (data === undefined) {
-    //   return <div>로딩중...</div>;
-    // }
+    if (data === undefined) {
+      return <div>로딩중...</div>;
+    }
   
-    // if (data) {
-    //   return <Redirect to="/workspace/sleact/channel/" />;
-    // }
+    if (data) {
+      return <Redirect to="/DW_Workspace/Channel" />;
+    }
 
     return (
         <div id="container">

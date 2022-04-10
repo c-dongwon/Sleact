@@ -4,7 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 const LogIn = loadable(() => import('@pages/DW_Login'));
 const SignUp = loadable(() => import('@pages/DW_SignUp'));
-const Workspace = loadable(() => import('@layouts/Workspace'));
+const Workspace = loadable(() => import('@layouts/DW_Workspace'));
+
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <Redirect exact path="/" to="/login" />
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/workspace/:workspace" component={Workspace} />
+      <Route path="/DW_Workspace" component={Workspace} />
     </Switch>
   );
 };
