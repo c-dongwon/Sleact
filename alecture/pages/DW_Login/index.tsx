@@ -32,7 +32,7 @@ const LogIn = () => {
     }
   
     if (data) {
-      return <Redirect to="/DW_Workspace/Channel" />;
+      return <Redirect to="/Workspace" />;
     }
 
     return (

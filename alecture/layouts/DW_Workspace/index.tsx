@@ -8,8 +8,8 @@ import gravatar from "gravatar"
 import loadable from '@loadable/component';
 import Menu from '@components/DW_Menu';
 
-const DW_Channel = loadable(() => import('@pages/DW_Channel'));
-const DW_DirectMessage = loadable(() => import('@pages/DW_DirectMessage'));
+const Channel = loadable(() => import('@pages/DW_Channel'));
+const DirectMessage = loadable(() => import('@pages/DW_DirectMessage'));
 
 const Workspace: FC= () => {
     const [showUserMenu, setShowUserMenu] = useState(false)
@@ -59,8 +59,8 @@ const Workspace: FC= () => {
                 </Channels>
                 <Chats>
                 <Switch>
-                    <Route path="/DW_Workspace/Channel" component={DW_Channel} />
-                    <Route path="/DW_Workspace/dm" component={DW_DirectMessage} />
+                    <Route path="/Workspace/Channel" component={Channel} />
+                    <Route path="/Workspace/dm" component={DirectMessage} />
                 </Switch>
                 </Chats>
             </WorkspaceWrapper>

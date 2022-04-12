@@ -58,7 +58,7 @@ const SignUp = () => {
     }
   
     if (data) {
-      return <Redirect to="/DW_Workspace" />;
+      return <Redirect to="/Workspace" />;
     
     }
     return (
