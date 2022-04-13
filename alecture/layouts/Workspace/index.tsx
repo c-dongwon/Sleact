@@ -91,36 +91,59 @@ const Workspace: VFC = () => {
     setShowCreateWorkspaceModal(true);
   }, []);
 
-  const onCreateWorkspace = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!newWorkspace || !newWorkspace.trim()) return;
-      if (!newUrl || !newUrl.trim()) return;
-      axios
-        .post(
-          '/api/workspaces',
-          {
-            workspace: newWorkspace,
-            url: newUrl,
-          },
-          {
-            withCredentials: true,
-          },
-        )
-        .then(() => {
-          revalidate();
-          setShowCreateWorkspaceModal(false);
-          setNewWorkpsace('');
-          setNewUrl('');
-        })
-        .catch((error) => {
-          console.dir(error);
-          toast.error(error.response?.data, { position: 'bottom-center' });
-        });
+  // const onCreateWorkspace = useCallback(
+  //   (e) => {
+  //     e.preventDefault();
+  //     if (!newWorkspace || !newWorkspace.trim()) return;
+  //     if (!newUrl || !newUrl.trim()) return;
+  //     axios
+  //       .post(
+  //         '/api/workspaces',
+  //         {
+  //           workspace: newWorkspace,
+  //           url: newUrl,
+  //         },
+  //         {
+  //           withCredentials: true,
+  //         },
+  //       )
+  //       .then(() => {
+  //         revalidate();
+  //         setShowCreateWorkspaceModal(false);
+  //         setNewWorkpsace('');
+  //         setNewUrl('');
+  //       })
+  //       .catch((error) => {
+  //         console.dir(error);
+  //         toast.error(error.response?.data, { position: 'bottom-center' });
+  //       });
+  //   },
+  //   [newWorkspace, newUrl],
+  // );
+  const onCreateWorkspace = useCallback((e) => {
+    e.preventDefault();
+    if(!newWorkspace || !newWorkspace.trim()) return;
+    if(!newUrl || !newUrl.trim()) return;
+    axios.post("http://localhost:3095/api/workspaces",
+    {
+      workspace:newWorkspace,
+      url:newUrl
     },
-    [newWorkspace, newUrl],
-  );
-
+    {
+      withCredentials:true
+    })
+    .then(() => {
+      revalidate();
+      setShowCreateWorkspaceModal(false);
+      setNewUrl("");
+      setNewWorkpsace("")
+    })
+    .catch((error) => {
+      console.dir(error);
+      toast.error(error.response?.data, { position: 'bottom-center' });
+    })
+  },[newWorkspace, newUrl])
+  
   const onCloseModal = useCallback(() => {
     setShowCreateWorkspaceModal(false);
     setShowCreateChannelModal(false);
