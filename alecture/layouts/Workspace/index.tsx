@@ -210,7 +210,7 @@ const Workspace: VFC = () => {
                 <button onClick={onLogout}>로그아웃</button>
               </WorkspaceModal>
             </Menu>
-            <ChannelList />
+            {channelData?.map((v) => <div>{v.name}</div>)}
             <DMList />
           </MenuScroll>
         </Channels>
