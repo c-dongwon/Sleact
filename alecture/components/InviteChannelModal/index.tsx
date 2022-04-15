@@ -23,6 +23,7 @@ const InviteChannelModal: FC<Props> = ({ show, onCloseModal, setShowInviteChanne
     fetcher,
   );
 
+  
   const onInviteMember = useCallback(
     (e) => {
       e.preventDefault();
