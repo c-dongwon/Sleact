@@ -5,10 +5,20 @@ export const Header = styled.header`
   font-family: Slack-Larsseit, Helvetica Neue, Helvetica, Segoe UI, Tahoma, Arial, sans-serif;
   font-weight: 700;
   font-size: 48px;
-  line-height: 46px;
+
   letter-spacing: -0.75px;
   margin-top: 50px;
   margin-bottom: 50px;
+  p{
+      font-size: 15px;
+      color:#333;
+      margin: 0;
+      margin-top: 10;
+      img{
+      vertical-align: sub;
+  }
+  }
+ 
 `;
 
 export const Form = styled.form`
@@ -57,7 +67,7 @@ export const Button = styled.button`
   width: 100%;
   max-width: 100%;
   color: #fff;
-  background-color: #4a154b;
+  background-color: #333;
   border: none;
   font-size: 18px;
   font-weight: 900;
@@ -71,7 +81,8 @@ export const Button = styled.button`
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   &:hover {
-    background-color: rgba(74, 21, 75, 0.9);
+    background-color: #aaa;
+    color:#333;
     border: none;
   }
   &:focus {
@@ -89,6 +100,7 @@ export const Error = styled.div`
 export const Success = styled.div`
   color: #2eb67d;
   font-weight: bold;
+  margin: 8px 0 16px;
 `;
 
 export const LinkContainer = styled.p`
@@ -98,7 +110,7 @@ export const LinkContainer = styled.p`
   width: 400px;
   max-width: 400px;
   & a {
-    color: #1264a3;
+    color: #333;
     text-decoration: none;
     font-weight: 700;
     &:hover {

@@ -31,7 +31,7 @@
     "react-mentions": "^4.1.1",
     "react-refresh": "^0.9.0",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^6.3.0",
     "react-toastify": "^7.0.3",
     "regexify-string": "^1.0.5",
     "socket.io-client": "^2.4.0",
