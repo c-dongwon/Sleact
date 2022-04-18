@@ -28,22 +28,24 @@ const SignUp = () => {
     },[password]);
 
     const onSubmit = useCallback((e) => {
-        e.preventDefault();
-        setSignUpError('');
-        setSignUpSuccess(false);
+        e.preventDefault(); //새로고침방지
+        setSignUpError(''); // 에러값 초기화
+        setSignUpSuccess(false); // 가입성공 이벤트 초기화
 
-        if(!mismatchError && nickname){
-           axios.post("/api/users",{
+        if(!mismatchError && nickname){ //비밀번호, 비밀번호 확인 value 값이 일치하면서 nickname값이 true 일때
+           axios.post("/api/users",{ //서버에 post 요청
                email,
                nickname,
                password
            })
-           .then((res) => {
-                setSignUpSuccess(true);
-                setEmail('');
-                setNickname(' ');
-                setPassword('');
-                setPasswordCheck('');
+           .then((res) => {// 요청 성공시
+                setSignUpSuccess(true); //화면에 가입 성공 문구 출력
+                setEmail(''); //input value 초기화
+                setNickname(' '); //input value 초기화
+                setPassword(''); //input value 초기화
+                setPasswordCheck(''); //input value 초기화
+
+                //confirm 창 출력후 확인시 로그인페이지이동
                 if(window.confirm('회원가입이 완료되었습니다. 로그인페이지로 이동합니다.')){
                     navigate('/login');
                 }else{
@@ -51,11 +53,16 @@ const SignUp = () => {
                 }
            })
            .catch((error) => {
+               //서버에서 요청 실패 응답 받아온후 화면에 출력
               setSignUpError(error.response.data)
            })
         }
         
     },[email, nickname, password, passwordCheck, mismatchError, nickname]);
+    
+    if(data === undefined){
+        <div>로딩중..</div>
+    }
 
     if(data){
         navigate("/workspace/channel");
