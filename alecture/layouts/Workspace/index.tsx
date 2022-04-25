@@ -3,7 +3,8 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { Channels, Chats, Header, MenuScroll, ProfileImg, RightMenu, WorkspaceName, Workspaces, WorkspaceWrapper } from './style';
+import gravatar from 'gravatar';
 const Workspace: FC = ({children}) => {
     const {data, error, mutate} = useSWR("/api/users", fetcher, 
     {
@@ -26,7 +27,23 @@ const Workspace: FC = ({children}) => {
 
     return (
         <div>
+            <Header>
+                <RightMenu>
+                    <span>
+                        <ProfileImg src={gravatar.url(data.email, { s: '28px', d: 'retro' })} alt={data.email}/>
+                    </span>
+                </RightMenu>
+            </Header>
             <button onClick={onLogOut}>로그아웃</button>
+            <WorkspaceWrapper>
+                <Workspaces>test</Workspaces>
+                <Channels>
+                    <WorkspaceName>Sleact</WorkspaceName>
+                    <MenuScroll>dd</MenuScroll>
+                </Channels>
+                <Chats>Chats</Chats>
+            </WorkspaceWrapper>
+            
             {children}
         </div>
     );
