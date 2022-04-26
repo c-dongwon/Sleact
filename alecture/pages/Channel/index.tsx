@@ -1,12 +1,15 @@
 import Workspace from '@layouts/Workspace';
 import React from 'react';
+import { Container, Header } from './styles';
 
-const index = () => {
+const Channel = () => {
     return (
         <Workspace>
-            로그인했따!
+            <Container>
+                <Header>채널</Header>
+            </Container>
         </Workspace>
     );
 };
 
-export default index;
+export default Channel;

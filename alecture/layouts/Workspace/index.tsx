@@ -8,7 +8,7 @@ import gravatar from 'gravatar';
 const Workspace: FC = ({children}) => {
     const {data, error, mutate} = useSWR("/api/users", fetcher, 
     {
-       // dedupingInterval:20000 //20초
+       //dedupingInterval:20000 //20초
     })
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Workspace: FC = ({children}) => {
             withCredentials:true
         })
         .then(() => {
-            mutate(false, true);
+            mutate(false, false);
         })
     },[]);
 
@@ -41,10 +41,9 @@ const Workspace: FC = ({children}) => {
                     <WorkspaceName>Sleact</WorkspaceName>
                     <MenuScroll>dd</MenuScroll>
                 </Channels>
-                <Chats>Chats</Chats>
+                <Chats> {children}</Chats>
             </WorkspaceWrapper>
-            
-            {children}
+
         </div>
     );
 };

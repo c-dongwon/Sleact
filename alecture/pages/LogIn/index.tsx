@@ -7,8 +7,8 @@ import axios from 'axios';
 import useSWR from 'swr';
 
 const LogIn = () => {
-    const {data, error, mutate} = useSWR("/api/users", fetcher); // 로그인 데이터 전역관리 SWR
-    const [loginError, setLoginError] = useState('') //로그인 에러 문구
+    const { data, error, revalidate, mutate } = useSWR('/api/users', fetcher); // 로그인 데이터 전역관리 SWR
+    const [loginError, setLoginError] = useState(false) //로그인 에러 문구
     const [email, onChangeEmail, setEmail] = useInput(''); // email input이벤트 커스텀훅
     const [password, onChangePassword, setPassword] = useInput(''); // password input이벤트 커스텀훅
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const LogIn = () => {
             withCredentials: true,// 서버와 클라이언트 통신을 위한 옵션
         })
         .then((response) => {
-            mutate(response.data, false) // 성공시 서버 응답받지않고 로컬데이터로 업데이트
+            mutate(); // 성공시 서버 응답받지않고 로컬데이터로 업데이트
         })
         .catch((error) => {
             setLoginError(error.response.data) // 실패시 에러문구 화면 출력
