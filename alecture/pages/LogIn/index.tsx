@@ -23,7 +23,7 @@ const LogIn = () => {
             withCredentials: true,// 서버와 클라이언트 통신을 위한 옵션
         })
         .then((response) => {
-            mutate(); // 성공시 서버 응답받지않고 로컬데이터로 업데이트
+            mutate(response.data, false); // 성공시 서버 응답받지않고 로컬데이터로 업데이트
         })
         .catch((error) => {
             setLoginError(error.response.data) // 실패시 에러문구 화면 출력
